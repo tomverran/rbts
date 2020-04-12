@@ -260,6 +260,22 @@ test('after one deletion', () => {
 
 
 // ----------------------------------------------------------------------------
+suite('non leaf deletion')
+
+test('root node', () => {
+  const rbt = fromObject({"a": true, "b": true, "c": true})
+  rbt.delete("b");
+  strictEqual(Array.from(rbt.entries()).length, 2)
+})
+
+test('non root, non leaf node', () => {
+  const rbt = fromObject({"a": true, "b": true, "c": true, "d": true, "e": true, "f": true})
+  rbt.delete("d");
+  strictEqual(Array.from(rbt.entries()).length, 5)
+})
+
+
+// ----------------------------------------------------------------------------
 suite('iteration')
 
 

@@ -276,6 +276,7 @@ export class Tree<K = string, V = any>implements Map<K, V> {
     let child: Node<K, V>, parent: Node<K, V>, red: boolean
     if (node._left.ok && node._right.ok) {
       const next = this._firstNode(node._right)
+      next._left = node._left
       if (node === this._root) this._root = next
       else node === node._parent._left
         ? node._parent._left = next
